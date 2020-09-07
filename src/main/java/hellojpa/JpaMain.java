@@ -45,14 +45,32 @@ public class JpaMain {
 //            }
 
             //비영속
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("helloJPA");
+//            Member member = new Member();
+//            member.setId(100L);
+//            member.setName("helloJPA");
+//
+//            //영속 (DB에 직접 저장되는 단계가 아니다.)
+//            System.out.println("BEFORE");
+//            em.persist(member);
+//            System.out.println("AFTER");
 
-            //영속 (DB에 직접 저장되는 단계가 아니다.)
-            System.out.println("BEFORE");
-            em.persist(member);
-            System.out.println("AFTER");
+            //영속
+//            Member member1 = new Member(150L, "A");
+//            Member member2 = new Member(160L, "B");
+//
+//            em.persist(member1);
+//            em.persist(member2);
+//            Member member1 = em.find(Member.class, 150L);
+//            member1.setName("ZZZZZZZ");
+
+            //준영속 테스트
+            Member member1 = em.find(Member.class, 150L);
+
+            em.clear();
+
+            Member member2 = em.find(Member.class, 160L);
+
+            System.out.println("======================");
 
             transaction.commit();
         } catch (Exception e){
