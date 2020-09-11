@@ -1,37 +1,27 @@
 package hellojpa;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member {
 
     @Id
-    private Long id;
-    private String name;
+    @GeneratedValue
+    @Column(name = "MEMBER_ID")
+    private String id;
+
+    @Column(name = "USERNAME")
+    private String userName;
+
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
+    @OneToMany(mappedBy = "member")
+    List<MemberProduct> memberProducts = new ArrayList<MemberProduct>();
 
     public Member() {
-    }
-
-    public Member(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    //Getter, Setter ...
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

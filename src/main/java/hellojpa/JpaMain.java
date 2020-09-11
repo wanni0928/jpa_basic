@@ -64,11 +64,15 @@ public class JpaMain {
 //            member1.setName("ZZZZZZZ");
 
             //준영속 테스트
-            Member member1 = em.find(Member.class, 150L);
+//            Member member1 = em.find(Member.class, 150L);
+//
+//            Member member2 = em.find(Member.class, 160L);
 
-            em.clear();
+            //기본 키 매핑
 
-            Member member2 = em.find(Member.class, 160L);
+            Member member = new Member();
+            member.setUserName("CCCCC");
+            em.persist(member);
 
             System.out.println("======================");
 
